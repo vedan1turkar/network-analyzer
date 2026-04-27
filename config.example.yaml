@@ -1,0 +1,128 @@
+# DONET - Network Analyzer Configuration Example
+# Copy this file to ~/.donet/config.yaml or /etc/donet/config.yaml
+
+threat_detection:
+  # Suspicious ports configuration
+  suspicious_ports:
+    22:
+      name: "SSH"
+      level: "MEDIUM"
+      description: "SSH brute force target"
+    23:
+      name: "Telnet"
+      level: "HIGH"
+      description: "Insecure protocol (avoid)"
+    25:
+      name: "SMTP"
+      level: "MEDIUM"
+      description: "Email server"
+    53:
+      name: "DNS"
+      level: "LOW"
+      description: "DNS queries (usually benign)"
+    69:
+      name: "TFTP"
+      level: "HIGH"
+      description: "Trivial FTP (often abused)"
+    110:
+      name: "POP3"
+      level: "MEDIUM"
+      description: "POP3 email"
+    135:
+      name: "RPC"
+      level: "HIGH"
+      description: "Remote Procedure Call"
+    139:
+      name: "NetBIOS"
+      level: "HIGH"
+      description: "NetBIOS Session Service"
+    143:
+      name: "IMAP"
+      level: "MEDIUM"
+      description: "IMAP email"
+    161:
+      name: "SNMP"
+      level: "MEDIUM"
+      description: "Simple Network Management"
+    389:
+      name: "LDAP"
+      level: "MEDIUM"
+      description: "Lightweight Directory Access"
+    445:
+      name: "SMB"
+      level: "HIGH"
+      description: "Server Message Block"
+    1433:
+      name: "MSSQL"
+      level: "HIGH"
+      description: "Microsoft SQL Server"
+    3306:
+      name: "MySQL"
+      level: "MEDIUM"
+      description: "MySQL database"
+    3389:
+      name: "RDP"
+      level: "HIGH"
+      description: "Remote Desktop Protocol"
+    5900:
+      name: "VNC"
+      level: "HIGH"
+      description: "Virtual Network Computing"
+    8080:
+      name: "HTTP-ALT"
+      level: "LOW"
+      description: "Alternate HTTP port"
+    8443:
+      name: "HTTPS-ALT"
+      level: "LOW"
+      description: "Alternate HTTPS port"
+
+  # Malicious payload patterns (regex)
+  malicious_patterns:
+    - pattern: "(?i)(sqlmap|nmap|nikto|burp|metasploit)"
+      level: "HIGH"
+      description: "Known scanning/exploitation tool"
+    - pattern: "(?i)(<script>|javascript:|onload=|onerror=)"
+      level: "HIGH"
+      description: "XSS pattern"
+    - pattern: "(?i)(union\s+select|select\s+.*\s+from|insert\s+into|drop\s+table)"
+      level: "MEDIUM"
+      description: "SQL injection pattern"
+    - pattern: "(?i)(eval\(|exec\(|system\(|passthru\()"
+      level: "HIGH"
+      description: "Code execution pattern"
+    - pattern: "(?i)(\.\./|\.\.\\|/etc/passwd|/etc/shadow)"
+      level: "MEDIUM"
+      description: "Path traversal"
+    - pattern: "(?i)(cmd\.exe|powershell|wscript|bitsadmin)"
+      level: "HIGH"
+      description: "Windows command execution"
+    - pattern: "(?i)(wget\s+http|curl\s+http|ftp\s+get)"
+      level: "MEDIUM"
+      description: "File download"
+
+  # Port scan detection: number of unique ports from same IP to same destination
+  port_scan_threshold: 10
+
+  # ARP spoofing detection time window (seconds)
+  arp_time_window: 60
+
+  # Baseline anomaly detection settings
+  baseline_window: 300  # Time window for baseline (seconds, 5 minutes)
+  baseline_rate_threshold: 100  # Packet rate threshold (packets/second)
+  baseline_port_diversity_threshold: 20  # Max unique ports per source IP
+
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file: null     # Set to path like "donet.log" to enable file logging
+  max_bytes: 10485760  # 10MB per log file
+  backup_count: 5      # Number of rotated files
+
+performance:
+  packet_sampling: 1   # Process every Nth packet (1 = all, 2 = half, etc.)
+  max_tracker_entries: 1000  # Max entries in tracking dictionaries
+
+reporting:
+  default_format: "text"  # text, json, html
+  include_safe_packets: false
+  verbose: false

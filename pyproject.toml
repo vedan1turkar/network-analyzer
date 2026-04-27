@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "donet-network-analyzer"
+version = "1.0.0"
+description = "DONET - Real-time packet threat detection with emoji indicators"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "DONET Team"}
+]
+keywords = ["network", "security", "ids", "packet-analysis", "threat-detection"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Security",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Monitoring",
+]
+
+dependencies = [
+    "scipy>=2.5.0",
+    "colorama>=0.4.0",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+donet = "cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]

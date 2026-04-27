@@ -1,0 +1,27 @@
+# Docker ignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.git/
+.gitignore
+README.md
+LICENSE
+tests/
+.dockerignore
+Dockerfile
+docker-compose.yml
+*.log
+*.txt
+*.json
+*.html
+.coverage
+htmlcov/
+.tox/
+build/
+dist/
+*.egg-info/

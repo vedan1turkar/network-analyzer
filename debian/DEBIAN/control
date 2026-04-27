@@ -1,0 +1,23 @@
+Package: donet
+Version: 1.0.0
+Section: net
+Priority: optional
+Architecture: all
+Depends: python3, python3-pip, libpcap0.8 (>= 1.0.0)
+Maintainer: DONET Team <donet@example.com>
+Description: Real-time packet threat detection with emoji indicators
+ DONET (Network Analyzer) is a lightweight network intrusion detection
+ system (IDS) that captures and analyzes network packets in real-time,
+ detecting potential threats using signature-based and anomaly-based
+ detection methods.
+ .
+ Features:
+  - IPv4 and IPv6 support
+  - Real-time threat detection with emoji indicators
+  - Multiple report formats (TXT, JSON, HTML)
+  - Configurable via YAML
+  - Port scan, ARP spoofing, and anomaly detection
+  - Live monitoring mode
+ .
+ Homepage: https://github.com/donet/network-analyzer
+ License: MIT

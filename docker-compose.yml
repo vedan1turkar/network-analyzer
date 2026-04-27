@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  donet:
+    image: donet/network-analyzer:latest
+    container_name: donet
+    network_mode: host  # Required for packet capture
+    privileged: true   # Required for raw socket access
+    volumes:
+      - ./reports:/app/reports
+      - ./config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: >
+      sh -c "
+      echo 'DONET Network Analyzer' &&
+      echo '=======================' &&
+      donet --list-interfaces &&
+      echo '' &&
+      echo 'Starting capture on default interface...' &&
+      donet --live
+      "
+    restart: unless-stopped
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
