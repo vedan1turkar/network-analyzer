@@ -60,7 +60,7 @@ This installs DONET system-wide with all dependencies and creates a `donet` comm
 
 ### **Option 2: pip (Python Package)**
 ```bash
-# Install from PyPI (when published)
+# Install from PyPI (WHen Published)
 pip3 install donet-network-analyzer
 
 # Or from source
