@@ -10,8 +10,8 @@ from datetime import datetime
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-from threat_analyzer import ThreatAnalyzer, THREAT_LEVELS
-from config import Config
+from donet.threat_analyzer import ThreatAnalyzer, THREAT_LEVELS
+from donet.config import Config
 
 
 class TestThreatAnalyzer:

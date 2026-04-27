@@ -6,7 +6,7 @@ import re
 import logging
 from typing import Dict, List, Tuple, Optional
 from datetime import datetime
-from config import Config
+from .config import Config
 
 logger = logging.getLogger(__name__)
 

@@ -9,10 +9,10 @@ import time
 from typing import Optional
 from datetime import datetime
 
-from packet_capture import PacketCapture
-from threat_analyzer import ThreatAnalyzer
-from reporter import Reporter
-from config import Config
+from .packet_capture import PacketCapture
+from .threat_analyzer import ThreatAnalyzer
+from .reporter import Reporter
+from .config import Config
 
 logger = logging.getLogger(__name__)
 
