@@ -2,6 +2,8 @@
 
 **Real-time packet threat detection with emoji indicators**
 
+**THIS PROJECT IS MADE USING AI**
+
 DONET is a lightweight network intrusion detection system (IDS) that captures and analyzes network packets in real-time, detecting potential threats using signature-based and anomaly-based detection methods.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
